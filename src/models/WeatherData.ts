@@ -3,5 +3,9 @@ export interface WeatherData {
   temperature: number;
   unit: string;
   description: string;
-  iconUrl: string;
+  icon: string;
+  info: string;
+  wind: string;
+  humidity: string;
+  clouds: string;
 }

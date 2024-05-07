@@ -1,15 +1,16 @@
 import { createApp } from 'vue';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
-library.add(...[faSpinner]);
+// Plugins
+import { registerPlugins } from '@/plugins';
+import "@/assets/scss/style.scss";
 
-createApp(App)
-  .component('font-awesome-icon', FontAwesomeIcon)
+const app = createApp(App)
   .use(store)
   .use(router)
-  .mount('#app');
+
+  registerPlugins(app)
+
+app.mount('#app');

@@ -19,7 +19,10 @@
     "process": "^0.11.10",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "vuex": "^4.0.0"
+    "vuetify": "^3.6.3",
+    "vuex": "^4.0.0",
+    "@mdi/font": "6.2.95",
+    "roboto-fontface": "*"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
@@ -35,6 +38,10 @@
     "vite": "^5.2.8",
     "vite-plugin-vue-devtools": "^7.0.25",
     "vitest": "^1.4.0",
-    "vue-tsc": "^2.0.11"
+    "vue-tsc": "^2.0.11",
+    "sass": "^1.71.1",
+    "unplugin-fonts": "^1.1.1",
+    "unplugin-vue-components": "^0.26.0",
+    "vite-plugin-vuetify": "^2.0.3"
   }
 }
