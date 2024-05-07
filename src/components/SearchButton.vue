@@ -1,5 +1,5 @@
 <template>
-    <v-btn @click="search" color="primary">{{ buttonText }}</v-btn>
+    <v-btn @click="search" color="primary" :disabled="loading">{{ buttonText }}</v-btn>
 </template>
 
 <script>

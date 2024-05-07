@@ -2,7 +2,7 @@
     <v-container>
         <v-row justify="center" class="search-bar">
             <SearchInput v-model="searchText" @search="handleSearch" />
-            <SearchButton @search="handleSearch" :buttonText="buttonText" />
+            <SearchButton @search="handleSearch" :buttonText="buttonText" :loading="loading" />
         </v-row>
     </v-container>
 </template>
