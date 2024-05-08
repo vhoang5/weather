@@ -28,9 +28,11 @@
   box-shadow: 0 0 70px fade(black, 30);
   z-index: 9999;
   background-color: var(--cardBgColor);
+  margin-top: calc(50vh - 325px);
 
   @media (max-height: 767px) {
     padding: 20px 5px;
+    margin-top: calc(50vh - 300px);
   }
 }
 

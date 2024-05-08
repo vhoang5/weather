@@ -8,6 +8,10 @@ export default {
         buttonText: {
             type: String,
             default: 'Search'
+        },
+        loading: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {

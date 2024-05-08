@@ -16,19 +16,12 @@ export default {
         buttonText: {
             type: String,
             default: 'Search'
-        },
-        loading: {
-            type: Boolean,
-            default: false
-        },
-        searchText: {
-            type: String,
-            default: ''
-        },
+        }
     },
     data() {
         return {
-            searchText: 'London'
+            searchText: 'London',
+            loading: false,
         };
     },
     methods: {
