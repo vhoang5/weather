@@ -40,5 +40,6 @@ export default {
 <style scoped>
 .search-bar {
     display: flex;
+    margin: 0px;
 }
 </style>
