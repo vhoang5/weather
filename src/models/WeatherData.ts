@@ -5,7 +5,4 @@ export interface WeatherData {
   description: string;
   icon: string;
   info: string;
-  wind: string;
-  humidity: string;
-  clouds: string;
 }

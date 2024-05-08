@@ -13,9 +13,6 @@ class WeatherService {
             description: response.data.weather[0].description,
             icon: response.data.weather[0].icon.substring(0, 2),
             info: response.data.weather[0].main,
-            wind: response.data.wind.speed,
-            humidity: response.data.main.humidity,
-            clouds: response.data.clouds.all,
         };
         return weatherData;
     }

@@ -37,12 +37,16 @@
 
   --section-gap: 160px;
 
-  --cardWidth: 768px;
   --darkColor: #666;
   --grayColor: #999;
   --cardBgColor: #f1f1f1;
-  --btn-margin: 8px;
+}
 
+:root {
+  --cardWidth: 768px;
+  --cardHight: 300px;
+  --btn-margin: 8px;
+  --btn-height: 56px;
 }
 
 @media (prefers-color-scheme: dark) {

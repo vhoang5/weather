@@ -5,14 +5,14 @@
         <v-card class="weather-app-card" elevation="5">
           <SearchBar @search="searchWeather" :loading="loading" />
 
-          <WeatherDetails :weatherData="weatherData" v-if="weatherData && !loading" />
-
           <v-alert v-if="errorMessage && !loading" type="error" outlined>{{ errorMessage }}</v-alert>
 
           <div class="text-center">
             <v-progress-circular v-if="loading" color="purple" indeterminate :rotate="360"
               :size="100"></v-progress-circular>
           </div>
+
+          <WeatherDetails :weatherData="weatherData" v-if="weatherData" />
         </v-card>
       </v-layout>
     </v-container>
@@ -29,6 +29,7 @@
   z-index: 9999;
   background-color: var(--cardBgColor);
   margin-top: calc(50vh - 325px);
+  min-height: var(--cardHight);
 
   @media (max-height: 767px) {
     padding: 20px 5px;
