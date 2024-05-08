@@ -12,7 +12,7 @@
               :size="100"></v-progress-circular>
           </div>
 
-          <WeatherDetails :weatherData="weatherData" v-if="weatherData" />
+          <WeatherDetails :weatherData="weatherData" v-if="weatherData && !loading" />
         </v-card>
       </v-layout>
     </v-container>
