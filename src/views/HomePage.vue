@@ -1,116 +1,76 @@
 <template>
-  <Layout>
-    <div class="weather-panel">
-      <div class="search-container">
-        <label for="city">
-          <input type="text" v-model="city" id="city" placeholder="Enter city name" />
-        </label>
-        <button @click="searchWeather" :disabled="loading || !city">Search</button>
-      </div>
-      <div v-if="loading" class="loading-spinner">
-        <font-awesome-icon icon="spinner" spin-pulse style="color: #74C0FC;" />
-      </div>
-      <div v-if="error && !loading" class="error-message">{{ errorMessage }}</div>
-      <WeatherDetails v-if="weatherData && !loading" :weatherData="weatherData" />
-    </div>
-  </Layout>
+  <transition name="fade" mode="out-in" appear>
+    <v-container bg fill-height grid-list-md text-xs-center>
+      <v-layout row wrap align-center>
+        <v-card class="weather-app-card" elevation="5">
+          <SearchBar @search="searchWeather" :loading="loading" />
+
+          <v-alert v-if="errorMessage && !loading" type="error" outlined>{{ errorMessage }}</v-alert>
+
+          <div class="text-center">
+            <v-progress-circular v-if="loading" color="purple" indeterminate :rotate="360"
+              :size="100"></v-progress-circular>
+          </div>
+
+          <WeatherDetails :weatherData="weatherData" v-if="weatherData && !loading" />
+        </v-card>
+      </v-layout>
+    </v-container>
+  </transition>
 </template>
+
+<style lang="scss">
+.weather-app-card {
+  width: 100%;
+  padding: 40px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 70px fade(black, 30);
+  z-index: 9999;
+  background-color: var(--cardBgColor);
+  margin-top: calc(50vh - 325px);
+  min-height: var(--cardHight);
+
+  @media (max-height: 767px) {
+    padding: 20px 5px;
+    margin-top: calc(50vh - 300px);
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-app-card {
+    padding: 10px 5px;
+  }
+}
+</style>
 
 <script lang="ts">
 import { mapGetters, useStore } from 'vuex';
 import { defineComponent, ref } from 'vue';
-import Layout from '@/template/Layout.vue';
 import WeatherDetails from '@/components/WeatherDetails.vue';
+import SearchBar from '@/components/SearchBar.vue';
 
 export default defineComponent({
   name: 'HomePage',
   components: {
-    Layout,
     WeatherDetails,
+    SearchBar,
   },
   computed: {
     ...mapGetters(['loading', 'error', 'errorMessage', 'weatherData']),
   },
   setup() {
     const store = useStore();
-    const city = ref('');
-    const searchWeather = () => {
-      if (!city.value) return;
-      store.dispatch('searchWeather', city.value);
+    const searchWeather = (searchText: string) => {
+      if (!searchText) return;
+      store.dispatch('searchWeather', searchText);
     };
 
+    store.dispatch('searchWeather', "London");
+
     return {
-      city,
       searchWeather,
     };
   },
 });
 </script>
-
-<style scoped>
-.weather-panel {
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.weather-panel {
-  width: 29%;
-  height: calc(100vh - 180px);
-  @media (max-width: 1440px) and (min-width: 1024px) {
-    width: 45%;
-  }
-  @media (max-width: 1024px) and (min-width: 425px) {
-    width: 50%;
-  }
-  @media (max-width: 768px) and (min-width: 258px) {
-    width: 90%;
-  }
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.search-container label {
-  margin-right: 10px;
-  flex: 1;
-}
-
-.search-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: calc(100% - 10px)
-}
-
-.search-container button {
-  padding: 10px 20px;
-  margin-left: 15px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:disabled {
-    background-color: #b8b8b8;
-  }
-}
-
-.search-container button:hover {
-  background-color: #0056b3;
-}
-
-.loading-spinner {
-  font-size: 40px;
-  margin: 100px calc(50% - 20px);
-}
-
-.error-message {
-  color: red;
-  margin: 20px 0;
-}
-
-</style>

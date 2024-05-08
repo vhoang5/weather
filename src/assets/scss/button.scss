@@ -1,0 +1,12 @@
+@import './base.scss';
+
+button {
+    margin-left: var(--btn-margin);
+    margin-right: var(--btn-margin);
+}
+
+.v-btn {
+    &.v-btn--density-default {
+        height: var(--btn-height);
+    }
+}
