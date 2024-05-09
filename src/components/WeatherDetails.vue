@@ -6,9 +6,7 @@
       </strong>
     </v-card-text>
     <v-card-text class="weather-temp">
-      <div class="weather-icon"
-        :style="[weatherData.icon ? { 'background-image': 'url(http://openweathermap.org/img/wn/' + weatherData.icon + 'd@2x.png)' } : {}]">
-      </div>
+      <v-img :width="200" cover :src="weatherData.icon" class="weather-icon"></v-img>
       <span>{{ weatherData.temperature }} </span>
       <sup>{{ weatherData.unit }}</sup>
     </v-card-text>
